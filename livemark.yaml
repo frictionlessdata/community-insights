@@ -1,0 +1,20 @@
+html:
+  favicon: assets/favicon.ico
+brand:
+  text: Frictionless Data Community Survey Results
+about:
+  text: Frictionless Data is an open-source toolkit that brings simplicity to the data experience.
+links:
+  items:
+    - name: Frictionless
+      path: https://frictionlessdata.io
+    - name: Discord
+      path: https://discord.com/channels/695635777199145130/695635777199145133
+    - name: Twitter
+      path: https://twitter.com/frictionlessd8a
+pages:
+  items:
+    - name: Home
+      path: index
+    - name: Take the survey
+      path: docs/survey
