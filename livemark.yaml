@@ -15,6 +15,6 @@ links:
 pages:
   items:
     - name: Home
-      path: index
+      path: /test-livemark
     - name: Take the survey
       path: docs/survey
