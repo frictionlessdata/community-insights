@@ -6,7 +6,7 @@
 <meta name="description" content="You can use this link https://forms.gle/7Cfbip2ocntFWznh9 or take the survey below:">
 <meta name="keywords" content="take,the,survey">
 <link rel="icon" href="assets/favicon.ico">
-<title>Take the survey</title>
+<title>Take the survey | Frictionless Data Community</title>
 <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
@@ -1409,19 +1409,6 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </style>
 <style>
 
-#livemark-rating {
-  height: 46px;
-}
-
-#livemark-rating iframe {
-  margin-top: -5px;
-  border: none;
-  opacity: 0.5;
-}
-
-</style>
-<style>
-
 #livemark-about {
   color: #888;
 }
@@ -1730,7 +1717,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
   <ul>
     <li>
       <a class="active" href="/">
-        Take the survey
+        Frictionless Data Community
       </a>
     </li>
   </ul>
@@ -1739,7 +1726,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-pages">
   <ul class="primary">
         <li class="primary  ">
-      <a href="/index2.html" class="primary">
+      <a href="/index.html" class="primary">
         Home
       </a>
           </li>
@@ -1770,7 +1757,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-signs">
   <div>
             <div class="prev">
-      <a href="/index2.html">
+      <a href="/index.html">
         « Frictionless Community at a Glance
       </a>
     </div>
@@ -1778,11 +1765,6 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </div>
 </div>
 <div id="livemark-right">
-
-<div id="livemark-rating">
-  <iframe src="https://ghbtns.com/github-btn.html?user=lwinfree&amp;repo=test-livemark&amp;type=star&amp;count=true&amp;size=large" width="160px" height="30px" title="GitHub">
-  </iframe>
-</div>
 
 <div id="livemark-about">
   <div>
@@ -1805,21 +1787,6 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         <li>
       <a href="https://twitter.com/frictionlessd8a" target="_blank">
         Twitter
-      </a>
-    </li>
-        <li>
-      <a href="https://github.com/lwinfree/test-livemark/issues" target="_blank">
-        Report
-      </a>
-    </li>
-        <li>
-      <a href="https://github.com/lwinfree/test-livemark/fork" target="_blank">
-        Fork
-      </a>
-    </li>
-        <li>
-      <a href="https://github.com/lwinfree/test-livemark/edit/main/docs/survey.md" target="_blank">
-        Edit
       </a>
     </li>
       
@@ -2133,9 +2100,9 @@ document.addEventListener("DOMContentLoaded", function () {
     $('#livemark-main').unhighlight({className: 'livemark-search-found'});
   }
   const searchItems = {
-          'index2': {
+          'index': {
           'name': 'Frictionless Community at a Glance',
-          'path': 'index2',
+          'path': 'index',
           'text': "# Frictionless Community at a Glance Have you ever wondered who uses Frictionless Data? Where are the contributors located? What do they really care about? Well, the core team has been wondering and so we asked our community to let us know via our 2021 Community Survey. Here are some of the things we learned! ## Where in the world can you find the Frictionless community? - Argentina - Spain - Canada - Belgium ## How long have people been using Frictionless? ```yaml chart { \"data\": {\"url\": \"comm_test_responses.csv\"}, \"mark\": \"bar\", \"encoding\": { \"x\": {\"field\": \"HowLong\", \"title\": \"How Long?\"}, \"y\": {\"aggregate\": \"count\", \"field\": \"ID\", \"title\": \"Number of Users\"}, }, \"width\": 500 } ``` ## What programming languages do community members use the most? ```yaml chart { \"data\": {\"url\": \"comm_test_responses.csv\"}, \"mark\": \"bar\", \"encoding\": { \"x\": {\"field\": \"WhatProgMost\", \"title\": \"Language?\"}, \"y\": {\"aggregate\": \"count\", \"field\": \"ID\", \"title\": \"Number of Users\"}, }, \"width\": 500 } ``` ## What is one problem you\u2019d like to see Frictionless work on? - *\"Ratify the standard to permit zipped csv within each package\"* - *\"Allowing schema_sync for Table Schema at a specification level. That would allow one to validate dataset against community-approved Table Schemas, which would be a huge boon to interoperability.\"* ## What is the schema for this dataset? ```python script from pprint import pprint from frictionless import describe resource = describe(\u0027comm_test_responses.csv\u0027) pprint(resource) ```",
       },
           'docs/survey': {
