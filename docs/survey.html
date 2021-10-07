@@ -6,7 +6,7 @@
 <meta name="description" content="You can use this link https://forms.gle/7Cfbip2ocntFWznh9 or take the survey below:">
 <meta name="keywords" content="take,the,survey">
 <link rel="icon" href="assets/favicon.ico">
-<title>Take the survey | Frictionless Data Community</title>
+<title>Take the survey | Frictionless Data Community Survey Results</title>
 <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
 <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://unpkg.com/prismjs@1.23.0/themes/prism.css">
@@ -1172,7 +1172,6 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 }
 
 </style>
-<link rel="stylesheet" href="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.css">
 <style>
 
 #livemark-brand {
@@ -1269,6 +1268,14 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 
 #livemark-pages a:hover {
   color: #80b2e6;
+}
+
+</style>
+<style>
+
+.livemark-reference {
+  display: block;
+  /* font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;; */
 }
 
 </style>
@@ -1409,6 +1416,19 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </style>
 <style>
 
+#livemark-rating {
+  height: 46px;
+}
+
+#livemark-rating iframe {
+  margin-top: -5px;
+  border: none;
+  opacity: 0.5;
+}
+
+</style>
+<style>
+
 #livemark-about {
   color: #888;
 }
@@ -1464,7 +1484,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </style>
 <style>
 
-.livemark-audio-item {
+.livemark-audio {
   padding-bottom: 10px;
 }
 
@@ -1551,6 +1571,20 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </style>
 <style>
 
+.livemark-image {
+  padding-bottom: 10px;
+}
+
+</style>
+<style>
+
+.livemark-infinity {
+  display: none;
+}
+
+</style>
+<style>
+
 #livemark-mobile {
   position: absolute;
   visibility: hidden;
@@ -1621,8 +1655,15 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <link rel="stylesheet" href="https://unpkg.com/paginationjs@2.1.5/dist/pagination.css">
 <style>
 
-#livemark-pagination {
+.livemark-pagination {
   display: none;
+}
+
+</style>
+<style>
+
+.livemark-remark {
+  display: block;
 }
 
 </style>
@@ -1704,7 +1745,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </style>
 <style>
 
-.livemark-video-item {
+.livemark-video {
   padding-bottom: 10px;
 }
 
@@ -1717,7 +1758,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
   <ul>
     <li>
       <a class="active" href="/">
-        Frictionless Data Community
+        Frictionless Data Community Survey Results
       </a>
     </li>
   </ul>
@@ -1746,7 +1787,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-09-02 16:32)
+  (2021-10-07 11:12)
 </div>
 
 <h1>Take the survey</h1>
@@ -1765,6 +1806,11 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </div>
 </div>
 <div id="livemark-right">
+
+<div id="livemark-rating">
+  <iframe src="https://ghbtns.com/github-btn.html?user=frictionlessdata&amp;repo=community-insights&amp;type=star&amp;count=true&amp;size=large" width="160px" height="30px" title="GitHub">
+  </iframe>
+</div>
 
 <div id="livemark-about">
   <div>
@@ -1787,6 +1833,21 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
         <li>
       <a href="https://twitter.com/frictionlessd8a" target="_blank">
         Twitter
+      </a>
+    </li>
+        <li>
+      <a href="https://github.com/frictionlessdata/community-insights/issues" target="_blank">
+        Report
+      </a>
+    </li>
+        <li>
+      <a href="https://github.com/frictionlessdata/community-insights/fork" target="_blank">
+        Fork
+      </a>
+    </li>
+        <li>
+      <a href="https://github.com/frictionlessdata/community-insights/edit/main/docs/survey.md" target="_blank">
+        Edit
       </a>
     </li>
       
@@ -1834,10 +1895,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 </script>
-<script src="https://unpkg.com/vega@5.20.2/build/vega.min.js"></script>
-<script src="https://unpkg.com/vega-lite@5.1.0/build/vega-lite.min.js"></script>
-<script src="https://unpkg.com/vega-embed@6.18.2/build/vega-embed.min.js"></script>
-<script src="https://unpkg.com/handsontable@9.0.0/dist/handsontable.min.js"></script>
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -1906,20 +1963,24 @@ document.addEventListener("DOMContentLoaded", function () {
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
-  for (const link of $("a")) {
-    const href = $(link).attr("href");
+  const handlePopstate = async () => {
+    const href = location.hash;
     if (href.startsWith("#card=")) {
       const code = href.split("=")[1];
-      $(link).click(async () => {
-        // TODO: handle errors
-        const response = await fetch(`/assets/cards/${code}.html`);
-        const html = await response.text();
-        $("#livemark-cards .modal-body").html(html);
-        $("#livemark-cards h1").appendTo("#livemark-cards .modal-title");
-        $("#livemark-cards .modal").modal();
+      // TODO: handle errors
+      const response = await fetch(`/assets/cards/${code}.html`);
+      const html = await response.text();
+      $("#livemark-cards .modal-title").html("");
+      $("#livemark-cards .modal-body").html(html);
+      $("#livemark-cards h1").appendTo("#livemark-cards .modal-title");
+      $("#livemark-cards .modal").modal();
+      $("#livemark-cards .modal").on("hidden.bs.modal", () => {
+        history.pushState("", document.title, window.location.pathname);
       });
     }
-  }
+  };
+  window.addEventListener("popstate", handlePopstate);
+  handlePopstate();
 });
 
 </script>
@@ -1999,6 +2060,29 @@ document.addEventListener("DOMContentLoaded", function () {
     <span class="fa fa-chevron-up"></span>
   </div>
 </div>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+  const container = $(".livemark-infinity");
+  if (container.length) {
+    const elements = container
+      .children()
+      .map((index, element) => element.outerHTML)
+      .get();
+    container.html(elements.splice(0, 100));
+    container.show();
+    window.addEventListener("scroll", () => {
+      const element = container.get(0);
+      const position = window.scrollY + window.innerHeight + 100;
+      const threshold = element.offsetTop + element.scrollHeight;
+      if (position > threshold) {
+        container.append(elements.splice(0, 100));
+      }
+    });
+  }
+});
+
+</script>
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {

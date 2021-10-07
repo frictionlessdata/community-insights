@@ -1,12 +1,12 @@
-html:
-  favicon: assets/favicon.ico
 brand:
   text: Frictionless Data Community Survey Results
 about:
   text: Frictionless Data is an open-source toolkit that brings simplicity to the data experience.
 github:
   user: frictionlessdata
-  repo: community-isights
+  repo: community-insights
+site:
+  favicon: assets/favicon.ico
 links:
   items:
     - name: Frictionless
@@ -18,6 +18,6 @@ links:
 pages:
   items:
     - name: Home
-      path: /test-livemark
+      path: index
     - name: Take the survey
       path: docs/survey
