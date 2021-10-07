@@ -4,6 +4,9 @@ brand:
   text: Frictionless Data Community Survey Results
 about:
   text: Frictionless Data is an open-source toolkit that brings simplicity to the data experience.
+github:
+  user: frictionlessdata
+  repo: community-isights
 links:
   items:
     - name: Frictionless
