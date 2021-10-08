@@ -1562,7 +1562,8 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
   -ms-overflow-style: unset;  /* Internet Explorer 10+ */
 }
 
-/* NOTE: temporarily implemented in HtmlPlugin
+/* NOTE: */
+/* temporarily implemented in HtmlPlugin */
 /* .with-readability #livemark-left::-webkit-scrollbar, */
 /* .with-readability #livemark-right::-webkit-scrollbar { */
   /* display: unset !important; [> Chrome; Safari <] */
@@ -1826,6 +1827,11 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
       </a>
     </li>
         <li>
+      <a href="https://livemark.frictionlessdata.io" target="_blank">
+        Livemark
+      </a>
+    </li>
+        <li>
       <a href="https://discord.com/channels/695635777199145130/695635777199145133" target="_blank">
         Discord
       </a>
@@ -1967,7 +1973,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const href = location.hash;
     if (href.startsWith("#card=")) {
       const code = href.split("=")[1];
-      // TODO: handle errors
       const response = await fetch(`/assets/cards/${code}.html`);
       const html = await response.text();
       $("#livemark-cards .modal-title").html("");
