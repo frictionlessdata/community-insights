@@ -1562,8 +1562,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
   -ms-overflow-style: unset;  /* Internet Explorer 10+ */
 }
 
-/* NOTE: */
-/* temporarily implemented in HtmlPlugin */
+/* NOTE: temporarily implemented in HtmlPlugin
 /* .with-readability #livemark-left::-webkit-scrollbar, */
 /* .with-readability #livemark-right::-webkit-scrollbar { */
   /* display: unset !important; [> Chrome; Safari <] */
@@ -1788,7 +1787,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-10-07 11:12)
+  (2021-10-07 15:38)
 </div>
 
 <h1>Take the survey</h1>
@@ -1973,6 +1972,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const href = location.hash;
     if (href.startsWith("#card=")) {
       const code = href.split("=")[1];
+      // TODO: handle errors
       const response = await fetch(`/assets/cards/${code}.html`);
       const html = await response.text();
       $("#livemark-cards .modal-title").html("");
@@ -2192,7 +2192,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'index': {
           'name': 'Frictionless Community at a Glance',
           'path': 'index',
-          'text': "# Frictionless Community at a Glance Have you ever wondered who uses Frictionless Data? Where are the contributors located? What do they really care about? Well, the core team has been wondering and so we asked our community to let us know via our 2021 Community Survey. Here are some of the things we learned! ## Where in the world can you find the Frictionless community? - Argentina - Spain - Canada - Belgium ## How long have people been using Frictionless? ```yaml chart { \"data\": {\"url\": \"comm_test_responses.csv\"}, \"mark\": \"bar\", \"encoding\": { \"x\": {\"field\": \"HowLong\", \"title\": \"How Long?\"}, \"y\": {\"aggregate\": \"count\", \"field\": \"ID\", \"title\": \"Number of Users\"}, }, \"width\": 500 } ``` ## What programming languages do community members use the most? ```yaml chart { \"data\": {\"url\": \"comm_test_responses.csv\"}, \"mark\": \"bar\", \"encoding\": { \"x\": {\"field\": \"WhatProgMost\", \"title\": \"Language?\"}, \"y\": {\"aggregate\": \"count\", \"field\": \"ID\", \"title\": \"Number of Users\"}, }, \"width\": 500 } ``` ## What is one problem you\u2019d like to see Frictionless work on? - *\"Ratify the standard to permit zipped csv within each package\"* - *\"Allowing schema_sync for Table Schema at a specification level. That would allow one to validate dataset against community-approved Table Schemas, which would be a huge boon to interoperability.\"* ## What is the schema for this dataset? ```python script from pprint import pprint from frictionless import describe resource = describe(\u0027comm_test_responses.csv\u0027) pprint(resource) ```",
+          'text': "# Frictionless Community at a Glance Have you ever wondered who uses Frictionless Data? Where are the contributors located? What do they really care about? Well, the core team has been wondering and so we asked our community to let us know via our 2021 Community Survey. Here are some of the things we learned! ## Where in the world can you find the Frictionless community? - Canada - Belgium - Brazil - Cameroon - Sweden ## How long have people been using Frictionless? ```yaml chart { \"data\": {\"url\": \"survey_cleaned_data.csv\"}, \"mark\": \"bar\", \"encoding\": { \"x\": {\"field\": \"how_long_user_years\", \"title\": \"How Many Years?\"}, \"y\": {\"aggregate\": \"count\", \"field\": \"ID\", \"title\": \"Number of Users\"}, }, \"width\": 500 } ``` ## What programming languages do community members use the most? ```yaml chart { \"data\": {\"url\": \"survey_cleaned_data.csv\"}, \"mark\": \"bar\", \"encoding\": { \"x\": {\"field\": \"programming_languages_most_used\", \"title\": \"Language?\"}, \"y\": {\"aggregate\": \"count\", \"field\": \"ID\", \"title\": \"Number of Users\"}, }, \"width\": 500 } ``` ## What is one problem you\u2019d like to see Frictionless work on? - *\"Ratify the standard to permit zipped csv within each package\"* - *\"Allowing schema_sync for Table Schema at a specification level. That would allow one to validate dataset against community-approved Table Schemas, which would be a huge boon to interoperability.\"* - *\"Better integration with CKAN\"* ## What is the schema for this dataset? ```python script from pprint import pprint from frictionless import describe resource = describe(\u0027survey_cleaned_data.csv\u0027) pprint(resource) ```",
       },
           'docs/survey': {
           'name': 'Take the survey',
