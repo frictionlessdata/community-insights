@@ -1562,8 +1562,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
   -ms-overflow-style: unset;  /* Internet Explorer 10+ */
 }
 
-/* NOTE: */
-/* temporarily implemented in HtmlPlugin */
+/* NOTE: temporarily implemented in HtmlPlugin
 /* .with-readability #livemark-left::-webkit-scrollbar, */
 /* .with-readability #livemark-right::-webkit-scrollbar { */
   /* display: unset !important; [> Chrome; Safari <] */
@@ -1788,17 +1787,18 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 <div id="livemark-main">
 <div id="livemark-notes">
   Written in <a href="https://livemark.frictionlessdata.io" target="_blank"> Livemark </a><br>
-  (2021-10-07 11:12)
+  (2021-10-21 14:18)
 </div>
 
 <h1>Frictionless Community at a Glance</h1>
 <p>Have you ever wondered who uses Frictionless Data? Where are the contributors located? What do they really care about? Well, the core team has been wondering and so we asked our community to let us know via our 2021 Community Survey. Here are some of the things we learned!</p>
 <h2>Where in the world can you find the Frictionless community?</h2>
 <ul>
-<li>Argentina</li>
-<li>Spain</li>
 <li>Canada</li>
 <li>Belgium</li>
+<li>Brazil</li>
+<li>Cameroon</li>
+<li>Sweden</li>
 </ul>
 <h2>How long have people been using Frictionless?</h2>
 <div class="livemark-chart" style="overflow-x: auto">
@@ -1807,7 +1807,7 @@ body:not(.with-readability) #livemark-right::-webkit-scrollbar {
 </div>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-  vegaEmbed('#livemark-chart-1', JSON.parse('{"data": {"url": "comm_test_responses.csv"}, "mark": "bar", "encoding": {"x": {"field": "HowLong", "title": "How Long?"}, "y": {"aggregate": "count", "field": "ID", "title": "Number of Users"}}, "width": 500}'))
+  vegaEmbed('#livemark-chart-1', JSON.parse('{"data": {"url": "survey_cleaned_data.csv"}, "mark": "bar", "encoding": {"x": {"field": "how_long_user_years", "title": "How Many Years?"}, "y": {"aggregate": "count", "field": "ID", "title": "Number of Users"}}, "width": 500}'))
 })
 </script>
 
@@ -1818,7 +1818,7 @@ document.addEventListener("DOMContentLoaded", function(){
 </div>
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-  vegaEmbed('#livemark-chart-2', JSON.parse('{"data": {"url": "comm_test_responses.csv"}, "mark": "bar", "encoding": {"x": {"field": "WhatProgMost", "title": "Language?"}, "y": {"aggregate": "count", "field": "ID", "title": "Number of Users"}}, "width": 500}'))
+  vegaEmbed('#livemark-chart-2', JSON.parse('{"data": {"url": "survey_cleaned_data.csv"}, "mark": "bar", "encoding": {"x": {"field": "programming_languages_most_used", "title": "Language?"}, "y": {"aggregate": "count", "field": "ID", "title": "Number of Users"}}, "width": 500}'))
 })
 </script>
 
@@ -1826,167 +1826,96 @@ document.addEventListener("DOMContentLoaded", function(){
 <ul>
 <li><em>"Ratify the standard to permit zipped csv within each package"</em></li>
 <li><em>"Allowing schema_sync for Table Schema at a specification level. That would allow one to validate dataset against community-approved Table Schemas, which would be a huge boon to interoperability."</em></li>
+<li><em>"Better integration with CKAN"</em></li>
 </ul>
 <h2>What is the schema for this dataset?</h2>
 <pre><code class="language-python">from pprint import pprint
 from frictionless import describe
 
-resource = describe('comm_test_responses.csv')
+resource = describe('survey_cleaned_data.csv')
 pprint(resource)
 </code></pre>
 
 <pre><code class="language-markup">{'encoding': 'utf-8',
  'format': 'csv',
  'hashing': 'md5',
- 'name': 'comm_test_responses',
- 'path': 'comm_test_responses.csv',
+ 'name': 'survey_cleaned_data',
+ 'path': 'survey_cleaned_data.csv',
  'profile': 'tabular-data-resource',
- 'schema': {'fields': [{'name': 'ID', 'type': 'integer'},
-                       {'name': 'Timestamp', 'type': 'string'},
-                       {'name': 'WhereAreYouLocated', 'type': 'string'},
-                       {'name': 'What written/spoken language(s) do you use?',
-                        'type': 'string'},
-                       {'name': 'Do you identify as a member of an '
-                                'underrepresented group in tech?',
-                        'type': 'string'},
-                       {'name': 'HowLong', 'type': 'string'},
-                       {'name': 'What programming language(s) do you use? '
-                                '(Select all that apply)',
-                        'type': 'string'},
-                       {'name': 'WhatProgMost', 'type': 'string'},
-                       {'name': 'What field of work/industry are you in? '
-                                'Select all that apply.',
-                        'type': 'string'},
-                       {'name': 'How often do you use Frictionless?',
-                        'type': 'string'},
-                       {'name': 'What kind of data do you work with? [Data '
-                                'larger than 1 GB]',
-                        'type': 'string'},
-                       {'name': 'What kind of data do you work with? [Data '
-                                'smaller than 1 GB]',
-                        'type': 'string'},
-                       {'name': 'What kind of data do you work with? [Tabular '
-                                'data (e.g. csv, tsv)]',
-                        'type': 'string'},
-                       {'name': 'What kind of data do you work with? [Binary '
-                                'data]',
-                        'type': 'string'},
-                       {'name': 'What kind of data do you work with? [Image '
-                                'data (e.g. png, tiff)]',
-                        'type': 'string'},
-                       {'name': 'What kind of data do you work with? [Other]',
-                        'type': 'string'},
-                       {'name': 'On a scale of 1 to 5, with 1 meaning “not '
-                                'satisfied at all” and 5 meaning “very '
-                                'satisfied” please rank your current '
-                                'satisfaction with Frictionless: [Tools/code]',
+ 'schema': {'fields': [{'name': 'iso_code', 'type': 'string'},
+                       {'name': 'location', 'type': 'string'},
+                       {'name': 'language_english', 'type': 'integer'},
+                       {'name': 'language_french', 'type': 'integer'},
+                       {'name': 'language_portuguese', 'type': 'integer'},
+                       {'name': 'language_dutch', 'type': 'integer'},
+                       {'name': 'language_italian', 'type': 'integer'},
+                       {'name': 'language_german', 'type': 'integer'},
+                       {'name': 'language_catalan', 'type': 'integer'},
+                       {'name': 'language_spanish', 'type': 'integer'},
+                       {'name': 'underrepresented', 'type': 'string'},
+                       {'name': 'how_long_user_years', 'type': 'string'},
+                       {'name': 'programming_language_all_python',
                         'type': 'integer'},
-                       {'name': 'On a scale of 1 to 5, with 1 meaning “not '
-                                'satisfied at all” and 5 meaning “very '
-                                'satisfied” please rank your current '
-                                'satisfaction with Frictionless: '
-                                '[Documentation]',
+                       {'name': 'programming_language_all_r',
                         'type': 'integer'},
-                       {'name': 'On a scale of 1 to 5, with 1 meaning “not '
-                                'satisfied at all” and 5 meaning “very '
-                                'satisfied” please rank your current '
-                                'satisfaction with Frictionless: [Website '
-                                '(frictionlessdata.io)]',
+                       {'name': 'programming_language_all_js',
                         'type': 'integer'},
-                       {'name': 'On a scale of 1 to 5, with 1 meaning “not '
-                                'satisfied at all” and 5 meaning “very '
-                                'satisfied” please rank your current '
-                                'satisfaction with Frictionless: [Governance]',
+                       {'name': 'programming_language_all_rb',
+                        'type': 'integer'},
+                       {'name': 'programming_language_all_php',
+                        'type': 'integer'},
+                       {'name': 'programming_language_all_sql',
+                        'type': 'integer'},
+                       {'name': 'programming_language_all_go',
+                        'type': 'integer'},
+                       {'name': 'programming_language_all_other',
+                        'type': 'integer'},
+                       {'name': 'programming_language_all_swift',
+                        'type': 'integer'},
+                       {'name': 'programming_language_all_clj',
+                        'type': 'integer'},
+                       {'name': 'programming_language_all_java',
+                        'type': 'integer'},
+                       {'name': 'programming_language_all_julia',
+                        'type': 'integer'},
+                       {'name': 'programming_languages_most_used',
                         'type': 'string'},
-                       {'name': 'If you are dissatisfied with one of the '
-                                'above, please tell us your ideas about how we '
-                                'can make it better:',
+                       {'name': 'industry', 'type': 'string'},
+                       {'name': 'how_often_use', 'type': 'string'},
+                       {'name': 'data_larger_than _1gb_user', 'type': 'string'},
+                       {'name': 'data_smaller_than_1gb_user', 'type': 'string'},
+                       {'name': 'tabular_data_user', 'type': 'string'},
+                       {'name': 'binary_data_user', 'type': 'string'},
+                       {'name': 'image_data_user', 'type': 'string'},
+                       {'name': 'other_data_user', 'type': 'string'},
+                       {'name': 'satisfied_tools_code', 'type': 'string'},
+                       {'name': 'satisfied_documentation', 'type': 'string'},
+                       {'name': 'satisfied_website', 'type': 'string'},
+                       {'name': 'satisfied_governance', 'type': 'string'},
+                       {'name': 'make_it_better', 'type': 'string'},
+                       {'name': 'pay_to_use', 'type': 'string'},
+                       {'name': 'replace_proprietary_software',
                         'type': 'string'},
-                       {'name': 'Do you think your company/institution would '
-                                'pay to use Frictionless? (Note: Frictionless '
-                                'code will always be freely available and open '
-                                'source!)',
+                       {'name': 'one_problem', 'type': 'string'},
+                       {'name': 'pilot_tool_fund', 'type': 'string'},
+                       {'name': 'solved_my_data_problem', 'type': 'string'},
+                       {'name': 'frictionless_team_was_helpful',
                         'type': 'string'},
-                       {'name': 'Have you used Frictionless code/tooling to '
-                                'replace proprietary software? If you select '
-                                '"Yes", please also write the proprietary '
-                                'software you are NOT using in the "Other..." '
-                                'option.',
+                       {'name': 'recommend_fd', 'type': 'string'},
+                       {'name': 'active_discord', 'type': 'string'},
+                       {'name': 'active_github', 'type': 'string'},
+                       {'name': 'active_community_calls', 'type': 'string'},
+                       {'name': 'active_discuss_forum', 'type': 'string'},
+                       {'name': 'opinion_community_communication',
                         'type': 'string'},
-                       {'name': 'WhatOneProb', 'type': 'string'},
-                       {'name': 'Have you been a pilot grantee/tool fund '
-                                'grantee?',
+                       {'name': 'supported_by_community', 'type': 'string'},
+                       {'name': 'engaged_with_community', 'type': 'string'},
+                       {'name': 'understand_how_decisions_made',
                         'type': 'string'},
-                       {'name': 'On a scale of 1 to 5 (with 1 meaning ‘I do '
-                                'not agree’ and 5 meaning ‘I totally agree’) '
-                                'please rate your agreement with the following '
-                                '[Frictionless solved my data problem]',
-                        'type': 'any'},
-                       {'name': 'On a scale of 1 to 5 (with 1 meaning ‘I do '
-                                'not agree’ and 5 meaning ‘I totally agree’) '
-                                'please rate your agreement with the following '
-                                '[The Frictionless team was helpful during the '
-                                'collaboration]',
-                        'type': 'any'},
-                       {'name': 'On a scale of 1 to 5 (with 1 meaning ‘I do '
-                                'not agree’ and 5 meaning ‘I totally agree’) '
-                                'please rate your agreement with the following '
-                                '[I would recommend Frictionless Data to '
-                                'others]',
-                        'type': 'any'},
-                       {'name': 'Are you active/present on the following '
-                                'community portals: [Discord]',
+                       {'name': 'my_contributions_are_valued',
                         'type': 'string'},
-                       {'name': 'Are you active/present on the following '
-                                'community portals: [Github]',
-                        'type': 'string'},
-                       {'name': 'Are you active/present on the following '
-                                'community portals: [Community calls]',
-                        'type': 'string'},
-                       {'name': 'Are you active/present on the following '
-                                'community portals: [Discuss forum]',
-                        'type': 'string'},
-                       {'name': 'What is your opinion on our current methods '
-                                'of communicating with the Frictionless '
-                                'community? (e.g. using Discord/Github '
-                                'discussions/etc)',
-                        'type': 'string'},
-                       {'name': 'On a scale of 1 to 5, with 1 meaning ‘I do '
-                                'not agree’ and 5 meaning ‘I totally agree’, '
-                                'please rate your agreement with the '
-                                'following: [I feel supported by the '
-                                'community]',
-                        'type': 'string'},
-                       {'name': 'On a scale of 1 to 5, with 1 meaning ‘I do '
-                                'not agree’ and 5 meaning ‘I totally agree’, '
-                                'please rate your agreement with the '
-                                'following: [I feel engaged with the '
-                                'community]',
-                        'type': 'string'},
-                       {'name': 'On a scale of 1 to 5, with 1 meaning ‘I do '
-                                'not agree’ and 5 meaning ‘I totally agree’, '
-                                'please rate your agreement with the '
-                                'following: [I understand how decisions are '
-                                'made within the community]',
-                        'type': 'string'},
-                       {'name': 'On a scale of 1 to 5, with 1 meaning ‘I do '
-                                'not agree’ and 5 meaning ‘I totally agree’, '
-                                'please rate your agreement with the '
-                                'following: [I feel like my contributions are '
-                                'valued]',
-                        'type': 'string'},
-                       {'name': 'On a scale of 1 to 5, with 1 meaning ‘I do '
-                                'not agree’ and 5 meaning ‘I totally agree’, '
-                                'please rate your agreement with the '
-                                'following: [I know how to contribute to '
-                                'Frictionless]',
-                        'type': 'string'},
-                       {'name': 'What else would you like us to know about the '
-                                'community? (How could we support you better? '
-                                'Do you have topics you’d like to see '
-                                'discussed at an upcoming community call? How '
-                                'is the community useful to you?)',
-                        'type': 'string'}]},
+                       {'name': 'know_how_contribute', 'type': 'string'},
+                       {'name': 'community_open_comments', 'type': 'string'}]},
  'scheme': 'file'}</code></pre>
 
 <div id="livemark-signs">
@@ -2169,6 +2098,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const href = location.hash;
     if (href.startsWith("#card=")) {
       const code = href.split("=")[1];
+      // TODO: handle errors
       const response = await fetch(`/assets/cards/${code}.html`);
       const html = await response.text();
       $("#livemark-cards .modal-title").html("");
@@ -2388,7 +2318,7 @@ document.addEventListener("DOMContentLoaded", function () {
           'index': {
           'name': 'Frictionless Community at a Glance',
           'path': 'index',
-          'text': "# Frictionless Community at a Glance Have you ever wondered who uses Frictionless Data? Where are the contributors located? What do they really care about? Well, the core team has been wondering and so we asked our community to let us know via our 2021 Community Survey. Here are some of the things we learned! ## Where in the world can you find the Frictionless community? - Argentina - Spain - Canada - Belgium ## How long have people been using Frictionless? ```yaml chart { \"data\": {\"url\": \"comm_test_responses.csv\"}, \"mark\": \"bar\", \"encoding\": { \"x\": {\"field\": \"HowLong\", \"title\": \"How Long?\"}, \"y\": {\"aggregate\": \"count\", \"field\": \"ID\", \"title\": \"Number of Users\"}, }, \"width\": 500 } ``` ## What programming languages do community members use the most? ```yaml chart { \"data\": {\"url\": \"comm_test_responses.csv\"}, \"mark\": \"bar\", \"encoding\": { \"x\": {\"field\": \"WhatProgMost\", \"title\": \"Language?\"}, \"y\": {\"aggregate\": \"count\", \"field\": \"ID\", \"title\": \"Number of Users\"}, }, \"width\": 500 } ``` ## What is one problem you\u2019d like to see Frictionless work on? - *\"Ratify the standard to permit zipped csv within each package\"* - *\"Allowing schema_sync for Table Schema at a specification level. That would allow one to validate dataset against community-approved Table Schemas, which would be a huge boon to interoperability.\"* ## What is the schema for this dataset? ```python script from pprint import pprint from frictionless import describe resource = describe(\u0027comm_test_responses.csv\u0027) pprint(resource) ```",
+          'text': "# Frictionless Community at a Glance Have you ever wondered who uses Frictionless Data? Where are the contributors located? What do they really care about? Well, the core team has been wondering and so we asked our community to let us know via our 2021 Community Survey. Here are some of the things we learned! ## Where in the world can you find the Frictionless community? - Canada - Belgium - Brazil - Cameroon - Sweden ## How long have people been using Frictionless? ```yaml chart { \"data\": {\"url\": \"survey_cleaned_data.csv\"}, \"mark\": \"bar\", \"encoding\": { \"x\": {\"field\": \"how_long_user_years\", \"title\": \"How Many Years?\"}, \"y\": {\"aggregate\": \"count\", \"field\": \"ID\", \"title\": \"Number of Users\"}, }, \"width\": 500 } ``` ## What programming languages do community members use the most? ```yaml chart { \"data\": {\"url\": \"survey_cleaned_data.csv\"}, \"mark\": \"bar\", \"encoding\": { \"x\": {\"field\": \"programming_languages_most_used\", \"title\": \"Language?\"}, \"y\": {\"aggregate\": \"count\", \"field\": \"ID\", \"title\": \"Number of Users\"}, }, \"width\": 500 } ``` ## What is one problem you\u2019d like to see Frictionless work on? - *\"Ratify the standard to permit zipped csv within each package\"* - *\"Allowing schema_sync for Table Schema at a specification level. That would allow one to validate dataset against community-approved Table Schemas, which would be a huge boon to interoperability.\"* - *\"Better integration with CKAN\"* ## What is the schema for this dataset? ```python script from pprint import pprint from frictionless import describe resource = describe(\u0027survey_cleaned_data.csv\u0027) pprint(resource) ```",
       },
           'docs/survey': {
           'name': 'Take the survey',
